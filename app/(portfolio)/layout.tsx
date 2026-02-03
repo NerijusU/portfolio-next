@@ -8,6 +8,8 @@ import { AppSidebar } from "@/components/app-sidebar";
 import SidebarToggle from "@/components/SidebarToggle";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
+import { FloatingDock } from "@/components/FloatingDock";
+import { ModeToggle } from "@/components/DarkModeToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
@@ -48,15 +50,15 @@ export default function RootLayout({
             <SidebarProvider defaultOpen={false}>
               <SidebarInset>{children}</SidebarInset>
               <AppSidebar side="right" />
-              {/* <FloatingDock /> */}
+              <FloatingDock />
               <SidebarToggle />
 
               {/* Mode Toggle - Desktop: bottom right next to AI chat, Mobile: top right next to burger menu */}
-              {/* <div className="fixed md:bottom-6 md:right-24 top-4 right-18 md:top-auto md:left-auto z-20">
-                  <div className="w-10 h-10 md:w-12 md:h-12">
-                    <ModeToggle />
-                  </div>
-                </div> */}
+              <div className="fixed md:bottom-6 md:right-24 top-4 right-18 md:top-auto md:left-auto z-20">
+                <div className="w-10 h-10 md:w-12 md:h-12">
+                  <ModeToggle />
+                </div>
+              </div>
             </SidebarProvider>
 
             <SanityLive />
