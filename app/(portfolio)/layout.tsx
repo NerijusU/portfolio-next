@@ -10,6 +10,9 @@ import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { FloatingDock } from "@/components/FloatingDock";
 import { ModeToggle } from "@/components/DarkModeToggle";
+import { DisableDraftMode } from "@/components/DisableDraftMode";
+import { VisualEditing } from "next-sanity/visual-editing";
+import { draftMode } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +34,7 @@ export const metadata: Metadata = {
  * @param {{ children: React.ReactNode }} props - Layout props with child routes.
  * @returns {JSX.Element} The root layout structure.
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -62,6 +65,13 @@ export default function RootLayout({
             </SidebarProvider>
 
             <SanityLive />
+
+            {(await draftMode()).isEnabled && (
+              <>
+                <VisualEditing />
+                <DisableDraftMode />
+              </>
+            )}
           </ThemeProvider>
         </body>
       </html>
