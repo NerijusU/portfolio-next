@@ -31,6 +31,7 @@
     "next-sanity": "^11.6.12",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "recharts": "2.15.4",
     "sanity": "^4.22.0",
     "styled-components": "^6.3.8",
     "tailwind-merge": "^3.4.0"
