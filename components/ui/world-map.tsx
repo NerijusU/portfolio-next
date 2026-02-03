@@ -27,13 +27,13 @@ export default function WorldMap({
   const svgRef = useRef<SVGSVGElement>(null);
   const map = new DottedMap({ height: 100, grid: "diagonal" });
 
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   const svgMap = map.getSVG({
     radius: 0.22,
-    color: theme === "dark" ? "#FFFFFF40" : "#00000040",
+    color: resolvedTheme === "dark" ? "#FFFFFF40" : "#00000040",
     shape: "circle",
-    backgroundColor: theme === "dark" ? "black" : "white",
+    backgroundColor: resolvedTheme === "dark" ? "black" : "white",
   });
 
   /**
