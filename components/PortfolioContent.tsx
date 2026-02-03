@@ -1,5 +1,8 @@
 import { AboutSection } from "./sections/AboutSection";
+import { EducationSection } from "./sections/EducationSection";
+import { ExperienceSection } from "./sections/ExperienceSection";
 import HeroSection from "./sections/HeroSection";
+import { ProjectsSection } from "./sections/ProjectsSection";
 import { SkillsSection } from "./sections/SkillsSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
 
@@ -10,9 +13,9 @@ async function PortfolioContent() {
       <AboutSection />
       <TestimonialsSection />
       <SkillsSection />
-      {/* <ExperienceSection /> */}
-      {/* <EducationSection /> */}
-      {/* <ProjectsSection /> */}
+      <ExperienceSection />
+      <EducationSection />
+      <ProjectsSection />
       {/* <CertificationsSection /> */}
       {/* <AchievementsSection /> */}
       {/* <ServicesSection /> */}
