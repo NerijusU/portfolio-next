@@ -25,7 +25,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio Next",
+  title: "Nerijus Urbonas",
   description: "Portfolio Next",
 };
 
