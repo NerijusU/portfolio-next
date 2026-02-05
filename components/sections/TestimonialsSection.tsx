@@ -40,6 +40,7 @@ export async function TestimonialsSection() {
     companyLogo: testimonial.companyLogo
       ? urlFor(testimonial.companyLogo).width(32).height(32).url()
       : undefined,
+    linkedinUrl: testimonial.linkedinUrl ? testimonial.linkedinUrl : undefined,
   }));
 
   return (

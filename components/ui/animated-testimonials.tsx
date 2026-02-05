@@ -10,6 +10,7 @@ type Testimonial = {
   name: string;
   designation: string;
   src: string;
+  linkedinUrl?: string;
 };
 export const AnimatedTestimonials = ({
   testimonials,
@@ -118,6 +119,16 @@ export const AnimatedTestimonials = ({
             <p className="text-sm text-gray-500 dark:text-neutral-500">
               {testimonials[active].designation}
             </p>
+            {testimonials[active].linkedinUrl && (
+              <a
+                href={testimonials[active].linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 inline-block text-sm text-blue-600 hover:underline dark:text-blue-400"
+              >
+                LinkedIn
+              </a>
+            )}
             <motion.p className="mt-8 text-lg text-gray-500 dark:text-neutral-300">
               {testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
