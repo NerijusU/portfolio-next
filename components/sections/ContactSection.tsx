@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { defineQuery } from "next-sanity";
-import WorldMapDemo from "../world-map-demo";
+// import WorldMapDemo from "../world-map-demo";
 import { sanityFetch } from "@/sanity/lib/live";
-import { ContactForm } from "@/components/ContactForm";
+// import { ContactForm } from "@/components/ContactForm";
 
 const PROFILE_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
   email,
@@ -12,7 +12,7 @@ const PROFILE_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
 }`);
 
 /**
- * Renders the contact section with profile data and a world map demo.
+ * Renders the contact section with profile data.
  * @returns {Promise<JSX.Element | null>} The contact section or null if data is missing.
  */
 export async function ContactSection() {
@@ -24,21 +24,17 @@ export async function ContactSection() {
 
   return (
     <section id="contact" className="py-20 px-6 pb-40 bg-muted/30">
-      <WorldMapDemo />
+      {/* <WorldMapDemo /> */}
 
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-xl text-muted-foreground">
-            Wherever you are in the world, let&apos;s work together on your next
-            project.
-          </p>
         </div>
 
         <div className="@container">
-          <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 justify-items-center">
             {/* Contact Info */}
-            <div className="@container/info space-y-6">
+            <div className="@container/info space-y-6 w-full max-w-md">
               <h3 className="text-xl @md/info:text-2xl font-semibold mb-6">
                 Contact Information
               </h3>
@@ -179,7 +175,7 @@ export async function ContactSection() {
             </div>
 
             {/* Contact Form */}
-            <ContactForm />
+            {/* <ContactForm /> */}
           </div>
         </div>
       </div>
