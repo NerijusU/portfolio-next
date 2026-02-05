@@ -93,7 +93,7 @@ async function HeroSection() {
                       rel="noopener noreferrer"
                       className="px-4 py-2 @md/hero:px-6 @md/hero:py-3 rounded-lg border hover:bg-accent transition-colors text-sm @md/hero:text-base"
                     >
-                      Twitter
+                      Twitter / X
                     </Link>
                   )}
                   {profile.socialLinks.website && (
