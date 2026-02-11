@@ -5,15 +5,17 @@ import Link from "next/link";
 import { LayoutTextFlip } from "../ui/layout-text-flip";
 import { urlFor } from "@/sanity/lib/image";
 import { ProfileImage } from "../ProfileImage";
+import type { LocaleSectionProps } from "./types";
+import { defaultLocale } from "@/i18n";
 
 const HERO_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
   firstName,
   lastName,
-  headline,
-  headlineStaticText,
+  "headline": headline[$locale],
+  "headlineStaticText": headlineStaticText[$locale],
   headlineAnimatedWords,
   headlineAnimationDuration,
-  shortBio,
+  "shortBio": shortBio[$locale],
   email,
   phone,
   location,
@@ -22,9 +24,12 @@ const HERO_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
   yearsOfExperience,
   profileImage
 }`);
-
-async function HeroSection() {
-  const { data: profile } = await sanityFetch({ query: HERO_QUERY });
+async function HeroSection({ locale }: LocaleSectionProps) {
+  const activeLocale = locale || defaultLocale;
+  const { data: profile } = await sanityFetch({
+    query: HERO_QUERY,
+    params: { locale: activeLocale },
+  });
 
   if (!profile) {
     return null;

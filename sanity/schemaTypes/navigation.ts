@@ -8,7 +8,7 @@ export default defineType({
     defineField({
       name: "title",
       title: "Link Title",
-      type: "string",
+      type: "localeString",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -44,14 +44,14 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: "title",
+      title: "title.en",
       subtitle: "href",
       order: "order",
     },
     prepare(selection) {
       const { title, subtitle, order } = selection;
       return {
-        title: `${order}. ${title}`,
+        title: `${order}. ${title || ""}`,
         subtitle: subtitle,
       };
     },

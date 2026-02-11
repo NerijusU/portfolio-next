@@ -2,6 +2,7 @@ import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
+import type { LocaleSectionProps } from "./types";
 
 const ABOUT_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
   firstName,
@@ -14,7 +15,7 @@ const ABOUT_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
   location
 }`);
 
-export async function AboutSection() {
+export async function AboutSection({ locale }: LocaleSectionProps) {
   const { data: profile } = await sanityFetch({ query: ABOUT_QUERY });
 
   if (!profile) {

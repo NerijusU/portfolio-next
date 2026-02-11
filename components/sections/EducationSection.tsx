@@ -4,6 +4,7 @@ import Link from "next/link";
 import { defineQuery } from "next-sanity";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
+import type { LocaleSectionProps } from "./types";
 
 const EDUCATION_QUERY =
   defineQuery(`*[_type == "education"] | order(endDate desc, startDate desc){
@@ -21,7 +22,7 @@ const EDUCATION_QUERY =
   order
 }`);
 
-export async function EducationSection() {
+export async function EducationSection({ locale }: LocaleSectionProps) {
   const { data: education } = await sanityFetch({ query: EDUCATION_QUERY });
 
   if (!education || education.length === 0) {

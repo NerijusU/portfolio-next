@@ -2,6 +2,7 @@ import { defineQuery } from "next-sanity";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
+import type { LocaleSectionProps } from "./types";
 
 const TESTIMONIALS_QUERY =
   defineQuery(`*[_type == "testimonial" && featured == true] | order(order asc){
@@ -16,7 +17,7 @@ const TESTIMONIALS_QUERY =
   linkedinUrl
 }`);
 
-export async function TestimonialsSection() {
+export async function TestimonialsSection({ locale }: LocaleSectionProps) {
   const { data: testimonials } = await sanityFetch({
     query: TESTIMONIALS_QUERY,
   });
