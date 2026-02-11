@@ -5,6 +5,7 @@ import { defineQuery } from "next-sanity";
 import { CometCard } from "@/components/ui/comet-card";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
+import type { LocaleSectionProps } from "./types";
 
 const CERTIFICATIONS_QUERY =
   defineQuery(`*[_type == "certification"] | order(issueDate desc){
@@ -20,7 +21,7 @@ const CERTIFICATIONS_QUERY =
   order
 }`);
 
-export async function CertificationsSection() {
+export async function CertificationsSection({ locale }: LocaleSectionProps) {
   const { data: certifications } = await sanityFetch({
     query: CERTIFICATIONS_QUERY,
   });

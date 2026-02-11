@@ -20,14 +20,14 @@ export default defineType({
     defineField({
       name: "headline",
       title: "Professional Headline",
-      type: "string",
+      type: "localeString",
       description: "E.g., 'Full-Stack Developer & AI Engineer'",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "headlineStaticText",
       title: "Headline Static Text",
-      type: "string",
+      type: "localeString",
       description:
         "The static part of your animated headline (e.g., 'I build')",
       placeholder: "I build",
@@ -52,7 +52,7 @@ export default defineType({
     defineField({
       name: "shortBio",
       title: "Short Bio",
-      type: "text",
+      type: "localeText",
       rows: 3,
       description: "Brief introduction (2-3 sentences)",
       validation: (Rule) => Rule.required().max(300),
@@ -166,7 +166,7 @@ export default defineType({
   preview: {
     select: {
       title: "firstName",
-      subtitle: "headline",
+      subtitle: "headline.en",
       media: "profileImage",
     },
     prepare(selection) {

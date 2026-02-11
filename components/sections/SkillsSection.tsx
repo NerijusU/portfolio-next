@@ -1,5 +1,6 @@
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
+import type { LocaleSectionProps } from "./types";
 import { SkillsChart } from "@/components/SkillsChart";
 
 const SKILLS_QUERY =
@@ -12,7 +13,7 @@ const SKILLS_QUERY =
   color
 }`);
 
-export async function SkillsSection() {
+export async function SkillsSection({ locale }: LocaleSectionProps) {
   const { data: skills } = await sanityFetch({ query: SKILLS_QUERY });
 
   if (!skills || skills.length === 0) {

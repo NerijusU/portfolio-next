@@ -3,6 +3,7 @@ import Image from "next/image";
 import { defineQuery } from "next-sanity";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
+import type { LocaleSectionProps } from "./types";
 
 const EXPERIENCE_QUERY =
   defineQuery(`*[_type == "experience"] | order(startDate desc){
@@ -21,7 +22,7 @@ const EXPERIENCE_QUERY =
   companyWebsite
 }`);
 
-export async function ExperienceSection() {
+export async function ExperienceSection({ locale }: LocaleSectionProps) {
   const { data: experiences } = await sanityFetch({ query: EXPERIENCE_QUERY });
 
   if (!experiences || experiences.length === 0) {

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { defineQuery } from "next-sanity";
 // import WorldMapDemo from "../world-map-demo";
 import { sanityFetch } from "@/sanity/lib/live";
+import type { LocaleSectionProps } from "./types";
 // import { ContactForm } from "@/components/ContactForm";
 
 const PROFILE_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
@@ -11,11 +12,7 @@ const PROFILE_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
   socialLinks
 }`);
 
-/**
- * Renders the contact section with profile data.
- * @returns {Promise<JSX.Element | null>} The contact section or null if data is missing.
- */
-export async function ContactSection() {
+export async function ContactSection({ locale }: LocaleSectionProps) {
   const { data: profile } = await sanityFetch({ query: PROFILE_QUERY });
 
   if (!profile) {

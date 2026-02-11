@@ -10,22 +10,23 @@ import HeroSection from "./sections/HeroSection";
 // import { ServicesSection } from "./sections/ServicesSection";
 import { SkillsSection } from "./sections/SkillsSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
+import type { Locale } from "@/i18n";
 
-async function PortfolioContent() {
+async function PortfolioContent({ locale }: { locale: Locale }) {
   return (
     <>
-      <HeroSection />
-      <AboutSection />
-      <TestimonialsSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <EducationSection />
+      <HeroSection locale={locale} />
+      <AboutSection locale={locale} />
+      <TestimonialsSection locale={locale} />
+      <SkillsSection locale={locale} />
+      <ExperienceSection locale={locale} />
+      <EducationSection locale={locale} />
       {/* <ProjectsSection /> */}
-      <CertificationsSection />
+      <CertificationsSection locale={locale} />
       {/* <AchievementsSection /> */}
       {/* <ServicesSection /> */}
       {/* <BlogSection /> */}
-      <ContactSection />
+      <ContactSection locale={locale} />
     </>
   );
 }
