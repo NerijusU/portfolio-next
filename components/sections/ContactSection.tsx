@@ -3,6 +3,8 @@ import { defineQuery } from "next-sanity";
 // import WorldMapDemo from "../world-map-demo";
 import { sanityFetch } from "@/sanity/lib/live";
 import type { LocaleSectionProps } from "./types";
+import { getTranslations } from "next-intl/server";
+import { defaultLocale } from "@/i18n";
 // import { ContactForm } from "@/components/ContactForm";
 
 const PROFILE_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
@@ -13,6 +15,11 @@ const PROFILE_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
 }`);
 
 export async function ContactSection({ locale }: LocaleSectionProps) {
+  const activeLocale = locale || defaultLocale;
+  const t = await getTranslations({
+    locale: activeLocale,
+    namespace: "Contact",
+  });
   const { data: profile } = await sanityFetch({ query: PROFILE_QUERY });
 
   if (!profile) {
@@ -25,7 +32,9 @@ export async function ContactSection({ locale }: LocaleSectionProps) {
 
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            {t("title")}
+          </h2>
         </div>
 
         <div className="@container">
@@ -33,7 +42,7 @@ export async function ContactSection({ locale }: LocaleSectionProps) {
             {/* Contact Info */}
             <div className="@container/info space-y-6 w-full max-w-md">
               <h3 className="text-xl @md/info:text-2xl font-semibold mb-6">
-                Contact Information
+                {t("infoTitle")}
               </h3>
 
               {profile.email && (
@@ -43,7 +52,7 @@ export async function ContactSection({ locale }: LocaleSectionProps) {
                   </div>
                   <div className="min-w-0">
                     <h4 className="font-semibold mb-1 text-sm @md/info:text-base">
-                      Email
+                      {t("emailLabel")}
                     </h4>
                     <Link
                       href={`mailto:${profile.email}`}
@@ -62,7 +71,7 @@ export async function ContactSection({ locale }: LocaleSectionProps) {
                   </div>
                   <div className="min-w-0">
                     <h4 className="font-semibold mb-1 text-sm @md/info:text-base">
-                      Phone
+                      {t("phoneLabel")}
                     </h4>
                     <Link
                       href={`tel:${profile.phone}`}
@@ -81,7 +90,7 @@ export async function ContactSection({ locale }: LocaleSectionProps) {
                   </div>
                   <div className="min-w-0">
                     <h4 className="font-semibold mb-1 text-sm @md/info:text-base">
-                      Location
+                      {t("locationLabel")}
                     </h4>
                     <p className="text-muted-foreground text-xs @md/info:text-sm">
                       {profile.location}
@@ -93,7 +102,7 @@ export async function ContactSection({ locale }: LocaleSectionProps) {
               {profile.socialLinks && (
                 <div className="pt-6">
                   <h4 className="font-semibold mb-4 text-sm @md/info:text-base">
-                    Follow Me
+                    {t("followMe")}
                   </h4>
                   <div className="flex flex-wrap gap-2 @md/info:gap-3">
                     {profile.socialLinks.github && (

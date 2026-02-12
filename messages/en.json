@@ -18,5 +18,44 @@
   "Skills": {
     "title": "Skills & Expertise",
     "subtitle": "A comprehensive overview of my technical proficiencies and tools I work with daily"
+  },
+  "Experience": {
+    "title": "Work Experience",
+    "subtitle": "My professional journey"
+  },
+  "Education": {
+    "title": "Education",
+    "subtitle": "My academic background",
+    "present": "Present",
+    "notAvailable": "N/A",
+    "gpaLabel": "GPA:",
+    "achievementsTitle": "Achievements & Honors",
+    "visitWebsite": "Visit Website"
+  },
+  "Certifications": {
+    "title": "Certifications",
+    "subtitle": "Professional credentials and certifications",
+    "certificateLabel": "CERTIFICATE",
+    "certificateFor": "for",
+    "validUntil": "Valid Until:",
+    "expiredSuffix": " (Expired)",
+    "credentialIdLabel": "Credential ID:",
+    "verifyCredential": "Verify Credential"
+  },
+  "Contact": {
+    "title": "Get In Touch",
+    "infoTitle": "Contact Information",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "locationLabel": "Location",
+    "followMe": "Follow Me"
+  },
+  "Testimonials": {
+    "title": "Professional Feedback",
+    "subtitle": "What people say about me"
+  },
+  "About": {
+    "title": "About Me",
+    "subtitle": "Get to know me better"
   }
 }

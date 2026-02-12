@@ -4,6 +4,8 @@ import { defineQuery } from "next-sanity";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import type { LocaleSectionProps } from "./types";
+import { getTranslations } from "next-intl/server";
+import { defaultLocale } from "@/i18n";
 
 const EXPERIENCE_QUERY =
   defineQuery(`*[_type == "experience"] | order(startDate desc){
@@ -23,6 +25,11 @@ const EXPERIENCE_QUERY =
 }`);
 
 export async function ExperienceSection({ locale }: LocaleSectionProps) {
+  const activeLocale = locale || defaultLocale;
+  const t = await getTranslations({
+    locale: activeLocale,
+    namespace: "Experience",
+  });
   const { data: experiences } = await sanityFetch({ query: EXPERIENCE_QUERY });
 
   if (!experiences || experiences.length === 0) {
@@ -41,11 +48,9 @@ export async function ExperienceSection({ locale }: LocaleSectionProps) {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Work Experience
+            {t("title")}
           </h2>
-          <p className="text-xl text-muted-foreground">
-            My professional journey
-          </p>
+          <p className="text-xl text-muted-foreground">{t("subtitle")}</p>
         </div>
 
         <div className="space-y-8">

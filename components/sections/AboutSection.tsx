@@ -1,6 +1,7 @@
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { defineQuery } from "next-sanity";
+import { getTranslations } from "next-intl/server";
 import { sanityFetch } from "@/sanity/lib/live";
 import type { LocaleSectionProps } from "./types";
 import { defaultLocale } from "@/i18n";
@@ -18,6 +19,10 @@ const ABOUT_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
 
 export async function AboutSection({ locale }: LocaleSectionProps) {
   const activeLocale = locale || defaultLocale;
+  const t = await getTranslations({
+    locale: activeLocale,
+    namespace: "About",
+  });
   const { data: profile } = await sanityFetch({
     query: ABOUT_QUERY,
     params: { locale: activeLocale },
@@ -31,8 +36,8 @@ export async function AboutSection({ locale }: LocaleSectionProps) {
     <section id="about" className="py-20 px-6">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">About Me</h2>
-          <p className="text-xl text-muted-foreground">Get to know me better</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">{t("title")}</h2>
+          <p className="text-xl text-muted-foreground">{t("subtitle")}</p>
         </div>
 
         <div className="prose prose-lg dark:prose-invert max-w-none">

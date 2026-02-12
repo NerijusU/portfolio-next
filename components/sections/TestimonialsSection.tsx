@@ -1,4 +1,5 @@
 import { defineQuery } from "next-sanity";
+import { getTranslations } from "next-intl/server";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
@@ -20,6 +21,10 @@ const TESTIMONIALS_QUERY =
 
 export async function TestimonialsSection({ locale }: LocaleSectionProps) {
   const activeLocale = locale || defaultLocale;
+  const t = await getTranslations({
+    locale: activeLocale,
+    namespace: "Testimonials",
+  });
   const { data: testimonials } = await sanityFetch({
     query: TESTIMONIALS_QUERY,
     params: { locale: activeLocale },
@@ -51,12 +56,8 @@ export async function TestimonialsSection({ locale }: LocaleSectionProps) {
     <section id="testimonials" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Professional Feedback
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            What people say about me
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">{t("title")}</h2>
+          <p className="text-xl text-muted-foreground">{t("subtitle")}</p>
         </div>
 
         <AnimatedTestimonials
