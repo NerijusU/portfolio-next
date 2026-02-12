@@ -1,13 +1,9 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import createMiddleware from "next-intl/middleware";
-import { defaultLocale, locales } from "./i18n";
+import { routing } from "./i18n/routing";
 
-const intlMiddleware = createMiddleware({
-  locales,
-  defaultLocale,
-  localePrefix: "always",
-});
+const intlMiddleware = createMiddleware(routing);
 
 export default clerkMiddleware((auth, req) => {
   if (req.nextUrl.pathname.startsWith("/studio")) {
