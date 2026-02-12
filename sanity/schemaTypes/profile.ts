@@ -23,7 +23,6 @@ export default defineType({
       type: "localeString",
       description:
         "The static part of your animated headline (e.g., 'I build')",
-      placeholder: "I build",
     }),
     defineField({
       name: "headlineAnimatedWords",
