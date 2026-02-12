@@ -18,13 +18,6 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "headline",
-      title: "Professional Headline",
-      type: "localeString",
-      description: "E.g., 'Full-Stack Developer & AI Engineer'",
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: "headlineStaticText",
       title: "Headline Static Text",
       type: "localeString",
@@ -35,10 +28,9 @@ export default defineType({
     defineField({
       name: "headlineAnimatedWords",
       title: "Headline Animated Words",
-      type: "array",
-      description: "Words that will flip/animate in your headline",
-      of: [{ type: "string" }],
-      validation: (Rule) => Rule.min(2).max(10),
+      type: "localeStringArray",
+      description:
+        "Words that will flip/animate in your headline (per language)",
     }),
     defineField({
       name: "headlineAnimationDuration",
@@ -165,7 +157,7 @@ export default defineType({
   preview: {
     select: {
       title: "firstName",
-      subtitle: "headline.en",
+      subtitle: "shortBio.en",
       media: "profileImage",
     },
     prepare(selection) {

@@ -7,6 +7,7 @@ import education from "./education";
 import experience from "./experience";
 import localeBlockContent from "./localeBlockContent";
 import localeString from "./localeString";
+import localeStringArray from "./localeStringArray";
 import localeText from "./localeText";
 import navigation from "./navigation";
 import profile from "./profile";
@@ -32,6 +33,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     siteSettings,
     localeBlockContent,
     localeString,
+    localeStringArray,
     localeText,
     navigation,
   ],

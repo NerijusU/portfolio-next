@@ -11,7 +11,6 @@ const CHAT_PROFILE_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
     _rev,
     firstName,
     lastName,
-    headline,
     shortBio,
     email,
     phone,

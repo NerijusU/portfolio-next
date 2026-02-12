@@ -1,4 +1,9 @@
 import { defineQuery } from "next-sanity";
+import {
+  asLocaleString,
+  asLocaleStringArray,
+  asLocaleText,
+} from "@/sanity/lib/localeProjection";
 import { sanityFetch } from "@/sanity/lib/live";
 import { BackgroundRippleEffect } from "../ui/background-ripple-effect";
 import Link from "next/link";
@@ -11,9 +16,8 @@ import { defaultLocale } from "@/i18n";
 const HERO_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
   firstName,
   lastName,
-  "headline": headline[$locale],
   "headlineStaticText": headlineStaticText[$locale],
-  headlineAnimatedWords,
+  "headlineAnimatedWords": headlineAnimatedWords[$locale],
   headlineAnimationDuration,
   "shortBio": shortBio[$locale],
   email,
@@ -52,21 +56,20 @@ async function HeroSection({ locale }: LocaleSectionProps) {
                 <span className="text-primary">{profile.lastName}</span>
               </h1>
               {profile.headlineStaticText &&
-              profile.headlineAnimatedWords &&
-              profile.headlineAnimatedWords.length > 0 ? (
+              asLocaleStringArray(profile.headlineAnimatedWords).length > 0 ? (
                 <LayoutTextFlip
-                  text={profile.headlineStaticText}
-                  words={profile.headlineAnimatedWords}
+                  text={asLocaleString(profile.headlineStaticText)}
+                  words={asLocaleStringArray(profile.headlineAnimatedWords)}
                   duration={profile.headlineAnimationDuration || 3000}
                   className="text-xl @md/hero:text-2xl @lg/hero:text-3xl text-muted-foreground font-medium"
                 />
-              ) : (
+              ) : profile.headlineStaticText ? (
                 <p className="text-xl @md/hero:text-2xl @lg/hero:text-3xl text-muted-foreground font-medium">
-                  {profile.headline}
+                  {asLocaleString(profile.headlineStaticText)}
                 </p>
-              )}
+              ) : null}
               <p className="text-base @md/hero:text-lg text-muted-foreground leading-relaxed">
-                {profile.shortBio}
+                {asLocaleText(profile.shortBio)}
               </p>
 
               {profile.socialLinks && (
