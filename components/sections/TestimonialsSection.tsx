@@ -3,13 +3,14 @@ import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import type { LocaleSectionProps } from "./types";
+import { defaultLocale } from "@/i18n";
 
 const TESTIMONIALS_QUERY =
   defineQuery(`*[_type == "testimonial" && featured == true] | order(order asc){
   name,
   position,
   company,
-  testimonial,
+  "testimonial": testimonial[$locale],
   rating,
   date,
   avatar,
@@ -18,8 +19,10 @@ const TESTIMONIALS_QUERY =
 }`);
 
 export async function TestimonialsSection({ locale }: LocaleSectionProps) {
+  const activeLocale = locale || defaultLocale;
   const { data: testimonials } = await sanityFetch({
     query: TESTIMONIALS_QUERY,
+    params: { locale: activeLocale },
   });
 
   if (!testimonials || testimonials.length === 0) {

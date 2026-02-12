@@ -42,7 +42,7 @@ export default defineType({
     defineField({
       name: "testimonial",
       title: "Testimonial",
-      type: "text",
+      type: "localeText",
       rows: 5,
       validation: (Rule) => Rule.required(),
     }),

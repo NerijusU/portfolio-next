@@ -3,11 +3,12 @@ import Link from "next/link";
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
 import type { LocaleSectionProps } from "./types";
+import { defaultLocale } from "@/i18n";
 
 const ABOUT_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
   firstName,
   lastName,
-  fullBio,
+  "fullBio": fullBio[$locale],
   yearsOfExperience,
   stats,
   email,
@@ -16,7 +17,11 @@ const ABOUT_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
 }`);
 
 export async function AboutSection({ locale }: LocaleSectionProps) {
-  const { data: profile } = await sanityFetch({ query: ABOUT_QUERY });
+  const activeLocale = locale || defaultLocale;
+  const { data: profile } = await sanityFetch({
+    query: ABOUT_QUERY,
+    params: { locale: activeLocale },
+  });
 
   if (!profile) {
     return null;

@@ -14,5 +14,9 @@
   },
   "ModeToggle": {
     "tooltip": "Design umschalten"
+  },
+  "Skills": {
+    "title": "Fähigkeiten & Expertise",
+    "subtitle": "Ein umfassender Überblick über meine technischen Fähigkeiten und die Tools, mit denen ich täglich arbeite"
   }
 }
