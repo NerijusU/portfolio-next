@@ -55,7 +55,7 @@ export default defineType({
       type: "localeText",
       rows: 3,
       description: "Brief introduction (2-3 sentences)",
-      validation: (Rule) => Rule.required().max(300),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "fullBio",
