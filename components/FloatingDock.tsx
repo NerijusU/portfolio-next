@@ -1,4 +1,5 @@
 import { defineQuery } from "next-sanity";
+import { asLocaleString } from "@/sanity/lib/localeProjection";
 import { sanityFetch } from "@/sanity/lib/live";
 import { FloatingDockClient } from "./FloatingDockClient";
 import type { Locale } from "@/i18n";
@@ -34,5 +35,10 @@ export async function FloatingDock({
     return null;
   }
 
-  return <FloatingDockClient navItems={navItems} />;
+  const normalizedNavItems = navItems.map((item) => ({
+    ...item,
+    title: asLocaleString(item.title),
+  }));
+
+  return <FloatingDockClient navItems={normalizedNavItems} />;
 }
