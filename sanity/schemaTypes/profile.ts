@@ -44,7 +44,6 @@ export default defineType({
       name: "shortBio",
       title: "Short Bio",
       type: "localeText",
-      rows: 3,
       description: "Brief introduction (2-3 sentences)",
       validation: (Rule) => Rule.required(),
     }),
