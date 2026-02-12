@@ -43,7 +43,6 @@ export default defineType({
       name: "testimonial",
       title: "Testimonial",
       type: "localeText",
-      rows: 5,
       validation: (Rule) => Rule.required(),
     }),
     defineField({
