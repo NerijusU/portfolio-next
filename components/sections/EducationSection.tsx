@@ -5,6 +5,8 @@ import { defineQuery } from "next-sanity";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import type { LocaleSectionProps } from "./types";
+import { getTranslations } from "next-intl/server";
+import { defaultLocale } from "@/i18n";
 
 const EDUCATION_QUERY =
   defineQuery(`*[_type == "education"] | order(endDate desc, startDate desc){
@@ -23,6 +25,11 @@ const EDUCATION_QUERY =
 }`);
 
 export async function EducationSection({ locale }: LocaleSectionProps) {
+  const activeLocale = locale || defaultLocale;
+  const t = await getTranslations({
+    locale: activeLocale,
+    namespace: "Education",
+  });
   const { data: education } = await sanityFetch({ query: EDUCATION_QUERY });
 
   if (!education || education.length === 0) {
@@ -59,10 +66,10 @@ export async function EducationSection({ locale }: LocaleSectionProps) {
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Education</h2>
-          <p className="text-xl text-muted-foreground">
-            My academic background
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            {t("title")}
+          </h2>
+          <p className="text-xl text-muted-foreground">{t("subtitle")}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -110,16 +117,18 @@ export async function EducationSection({ locale }: LocaleSectionProps) {
                     <span>
                       {edu.startDate && formatDate(edu.startDate)} -{" "}
                       {edu.current
-                        ? "Present"
+                        ? t("present")
                         : edu.endDate
                           ? formatDate(edu.endDate)
-                          : "N/A"}
+                          : t("notAvailable")}
                     </span>
                   </div>
                   {edu.gpa && (
                     <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
                       <IconAward className="w-3.5 h-3.5" />
-                      <span>GPA: {edu.gpa}</span>
+                      <span>
+                        {t("gpaLabel")} {edu.gpa}
+                      </span>
                     </div>
                   )}
                 </div>
@@ -136,7 +145,7 @@ export async function EducationSection({ locale }: LocaleSectionProps) {
                   <div className="mb-4 p-3 rounded-lg bg-muted/50">
                     <h4 className="text-sm font-semibold mb-2 flex items-center gap-2">
                       <IconAward className="w-4 h-4 text-primary" />
-                      Achievements & Honors
+                      {t("achievementsTitle")}
                     </h4>
                     <ul className="space-y-1.5">
                       {edu.achievements.map((achievement, idx) => (
@@ -160,7 +169,7 @@ export async function EducationSection({ locale }: LocaleSectionProps) {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-sm text-primary hover:underline font-medium group-hover:gap-3 transition-all"
                   >
-                    Visit Website
+                    {t("visitWebsite")}
                     <IconExternalLink className="w-4 h-4" />
                   </Link>
                 )}

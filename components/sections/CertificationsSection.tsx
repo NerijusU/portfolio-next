@@ -6,6 +6,8 @@ import { CometCard } from "@/components/ui/comet-card";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import type { LocaleSectionProps } from "./types";
+import { getTranslations } from "next-intl/server";
+import { defaultLocale } from "@/i18n";
 
 const CERTIFICATIONS_QUERY =
   defineQuery(`*[_type == "certification"] | order(issueDate desc){
@@ -22,6 +24,11 @@ const CERTIFICATIONS_QUERY =
 }`);
 
 export async function CertificationsSection({ locale }: LocaleSectionProps) {
+  const activeLocale = locale || defaultLocale;
+  const t = await getTranslations({
+    locale: activeLocale,
+    namespace: "Certifications",
+  });
   const { data: certifications } = await sanityFetch({
     query: CERTIFICATIONS_QUERY,
   });
@@ -51,11 +58,9 @@ export async function CertificationsSection({ locale }: LocaleSectionProps) {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Certifications
+            {t("title")}
           </h2>
-          <p className="text-xl text-muted-foreground">
-            Professional credentials and certifications
-          </p>
+          <p className="text-xl text-muted-foreground">{t("subtitle")}</p>
         </div>
 
         <div className="@container">
@@ -117,9 +122,11 @@ export async function CertificationsSection({ locale }: LocaleSectionProps) {
                       {/* Certificate Title - Small and Gold at top */}
                       <div className="mb-5">
                         <h4 className="text-lg font-bold text-yellow-600/80 mb-1 uppercase tracking-wide">
-                          CERTIFICATE
+                          {t("certificateLabel")}
                         </h4>
-                        <p className="text-xs text-yellow-600/80 italic">for</p>
+                        <p className="text-xs text-yellow-600/80 italic">
+                          {t("certificateFor")}
+                        </p>
                       </div>
 
                       {/* Certificate Name - Main Subject */}
@@ -191,7 +198,7 @@ export async function CertificationsSection({ locale }: LocaleSectionProps) {
                           {cert.expiryDate && (
                             <div className="text-center">
                               <span className="text-zinc-400">
-                                Valid Until:{" "}
+                                {t("validUntil")}{" "}
                               </span>
                               <span
                                 className={
@@ -201,14 +208,15 @@ export async function CertificationsSection({ locale }: LocaleSectionProps) {
                                 }
                               >
                                 {formatDate(cert.expiryDate)}
-                                {isExpired(cert.expiryDate) && " (Expired)"}
+                                {isExpired(cert.expiryDate) &&
+                                  t("expiredSuffix")}
                               </span>
                             </div>
                           )}
                           {cert.credentialId && (
                             <div className="text-center">
                               <p className="text-[9px] text-zinc-500 mb-1">
-                                Credential ID:
+                                {t("credentialIdLabel")}
                               </p>
                               <p className="text-[9px] font-mono text-zinc-400 break-all px-4">
                                 {cert.credentialId}
@@ -226,7 +234,7 @@ export async function CertificationsSection({ locale }: LocaleSectionProps) {
                               rel="noopener noreferrer"
                               className="inline-flex items-center justify-center gap-1.5 px-5 py-2 text-xs font-semibold text-zinc-900 bg-yellow-600/90 hover:bg-yellow-500 transition-all shadow-md hover:shadow-lg"
                             >
-                              Verify Credential
+                              {t("verifyCredential")}
                               <IconExternalLink className="w-3.5 h-3.5" />
                             </Link>
                           </div>

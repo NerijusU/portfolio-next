@@ -18,5 +18,44 @@
   "Skills": {
     "title": "Навыки и экспертиза",
     "subtitle": "Обзор моих технических навыков и инструментов, с которыми я работаю ежедневно"
+  },
+  "Experience": {
+    "title": "Опыт работы",
+    "subtitle": "Мой профессиональный путь"
+  },
+  "Education": {
+    "title": "Образование",
+    "subtitle": "Моё академическое образование",
+    "present": "По настоящее время",
+    "notAvailable": "Нет данных",
+    "gpaLabel": "GPA:",
+    "achievementsTitle": "Достижения и награды",
+    "visitWebsite": "Посетить сайт"
+  },
+  "Certifications": {
+    "title": "Сертификаты",
+    "subtitle": "Профессиональные удостоверения и сертификаты",
+    "certificateLabel": "СЕРТИФИКАТ",
+    "certificateFor": "для",
+    "validUntil": "Действителен до:",
+    "expiredSuffix": " (Истек)",
+    "credentialIdLabel": "ID удостоверения:",
+    "verifyCredential": "Проверить сертификат"
+  },
+  "Contact": {
+    "title": "Связаться",
+    "infoTitle": "Контактная информация",
+    "emailLabel": "Эл. почта",
+    "phoneLabel": "Телефон",
+    "locationLabel": "Местоположение",
+    "followMe": "Подписывайтесь"
+  },
+  "Testimonials": {
+    "title": "Отзывы",
+    "subtitle": "Что обо мне говорят"
+  },
+  "About": {
+    "title": "Обо мне",
+    "subtitle": "Узнайте меня лучше"
   }
 }
