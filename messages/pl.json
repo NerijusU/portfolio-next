@@ -3,5 +3,16 @@
     "present": "Present",
     "notAvailable": "N/A",
     "at": "at"
+  },
+  "LanguageSwitcher": {
+    "label": "Język",
+    "tooltip": "Zmień język",
+    "en": "Angielski",
+    "de": "Niemiecki",
+    "pl": "Polski",
+    "ru": "Rosyjski"
+  },
+  "ModeToggle": {
+    "tooltip": "Przełącz motyw"
   }
 }

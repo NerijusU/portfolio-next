@@ -11,6 +11,7 @@ import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { FloatingDock } from "@/components/FloatingDock";
 import { ModeToggle } from "@/components/DarkModeToggle";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { draftMode } from "next/headers";
@@ -65,8 +66,11 @@ export default async function RootLayout({
             <FloatingDock locale={activeLocale} />
             <SidebarToggle />
 
-            {/* Mode Toggle - Desktop: bottom right next to AI chat, Mobile: top right next to burger menu */}
-            <div className="fixed md:bottom-6 md:right-24 top-4 right-18 md:top-auto md:left-auto z-0">
+            {/* Mode Toggle & Language Switcher - Desktop: bottom right next to AI chat, Mobile: top right next to burger menu */}
+            <div className="fixed md:bottom-6 md:right-24 top-4 right-18 md:top-auto md:left-auto z-0 flex items-center gap-2">
+              <div className="w-10 h-10 md:w-12 md:h-12">
+                <LanguageSwitcher />
+              </div>
               <div className="w-10 h-10 md:w-12 md:h-12">
                 <ModeToggle />
               </div>
