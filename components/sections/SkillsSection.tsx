@@ -1,7 +1,9 @@
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
+import { getTranslations } from "next-intl/server";
 import type { LocaleSectionProps } from "./types";
 import { SkillsChart } from "@/components/SkillsChart";
+import { defaultLocale } from "@/i18n";
 
 const SKILLS_QUERY =
   defineQuery(`*[_type == "skill"] | order(category asc, order asc){
@@ -14,6 +16,8 @@ const SKILLS_QUERY =
 }`);
 
 export async function SkillsSection({ locale }: LocaleSectionProps) {
+  const activeLocale = locale || defaultLocale;
+  const t = await getTranslations({ locale: activeLocale, namespace: "Skills" });
   const { data: skills } = await sanityFetch({ query: SKILLS_QUERY });
 
   if (!skills || skills.length === 0) {
@@ -25,11 +29,10 @@ export async function SkillsSection({ locale }: LocaleSectionProps) {
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Skills & Expertise
+            {t("title")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive overview of my technical proficiencies and tools I
-            work with daily
+            {t("subtitle")}
           </p>
         </div>
 

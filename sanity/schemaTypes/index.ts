@@ -5,6 +5,7 @@ import certification from "./certification";
 import contact from "./contact";
 import education from "./education";
 import experience from "./experience";
+import localeBlockContent from "./localeBlockContent";
 import localeString from "./localeString";
 import localeText from "./localeText";
 import navigation from "./navigation";
@@ -29,6 +30,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     service,
     contact,
     siteSettings,
+    localeBlockContent,
     localeString,
     localeText,
     navigation,

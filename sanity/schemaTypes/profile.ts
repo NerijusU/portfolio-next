@@ -60,8 +60,7 @@ export default defineType({
     defineField({
       name: "fullBio",
       title: "Full Bio",
-      type: "array",
-      of: [{ type: "block" }],
+      type: "localeBlockContent",
       description: "Detailed about section with rich text formatting",
     }),
     defineField({

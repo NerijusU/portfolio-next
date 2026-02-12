@@ -14,5 +14,9 @@
   },
   "ModeToggle": {
     "tooltip": "Przełącz motyw"
+  },
+  "Skills": {
+    "title": "Umiejętności i specjalizacja",
+    "subtitle": "Kompleksowy przegląd moich umiejętności technicznych i narzędzi, z których korzystam na co dzień"
   }
 }
