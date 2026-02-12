@@ -2,6 +2,7 @@ import { defineQuery } from "next-sanity";
 import { getTranslations } from "next-intl/server";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { urlFor } from "@/sanity/lib/image";
+import { asLocaleText } from "@/sanity/lib/localeProjection";
 import { sanityFetch } from "@/sanity/lib/live";
 import type { LocaleSectionProps } from "./types";
 import { defaultLocale } from "@/i18n";
@@ -36,7 +37,7 @@ export async function TestimonialsSection({ locale }: LocaleSectionProps) {
 
   // Map Sanity testimonials to AnimatedTestimonials format
   const formattedTestimonials = testimonials.map((testimonial) => ({
-    quote: testimonial.testimonial || "",
+    quote: asLocaleText(testimonial.testimonial),
     name: testimonial.name || "Anonymous",
     designation: testimonial.company
       ? `${testimonial.position} at ${testimonial.company}`
