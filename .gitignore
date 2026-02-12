@@ -23,7 +23,7 @@
 # misc
 .DS_Store
 *.pem
-text.txt
+/private_files
 /prompts
 
 # debug
