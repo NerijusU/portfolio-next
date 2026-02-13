@@ -26,6 +26,9 @@
 /private_files
 /prompts
 
+# example/dummy data (Sanity import scripts & NDJSON)
+/Data
+
 # debug
 npm-debug.log*
 yarn-debug.log*
