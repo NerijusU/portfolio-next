@@ -23,7 +23,9 @@
   "Experience": {
     "title": "Darbo patirtis",
     "subtitle": "Mano profesinis kelias",
-    "websiteLabel": "Svetainė"
+    "websiteLabel": "Svetainė",
+    "responsibilitiesTitle": "Atsakomybės:",
+    "achievementsTitle": "Pasiekimai:"
   },
   "Education": {
     "title": "Išsilavinimas",
@@ -42,7 +44,7 @@
     "validUntil": "Galioja iki:",
     "expiredSuffix": " (Pasibaigęs)",
     "credentialIdLabel": "Įgaliojimo ID:",
-    "verifyCredential": "Patikrinti įgaliojimą"
+    "verifyCredential": "Patikrinti sertifikatą"
   },
   "Contact": {
     "title": "Susisiekite",

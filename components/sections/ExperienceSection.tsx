@@ -165,7 +165,7 @@ export async function ExperienceSection({ locale }: LocaleSectionProps) {
                   <div className="mb-4">
                     <h4 className="font-semibold mb-2 text-sm @md/card:text-base">
                       {asLocaleString(labels?.responsibilitiesTitle) ||
-                        "Key Responsibilities:"}
+                        t("responsibilitiesTitle")}
                     </h4>
                     <ul className="list-disc list-inside space-y-1 text-muted-foreground text-xs @md/card:text-sm">
                       {responsibilities.map((resp, idx) => (
@@ -179,7 +179,7 @@ export async function ExperienceSection({ locale }: LocaleSectionProps) {
                   <div className="mb-4">
                     <h4 className="font-semibold mb-2 text-sm @md/card:text-base">
                       {asLocaleString(labels?.achievementsTitle) ||
-                        "Achievements:"}
+                        t("achievementsTitle")}
                     </h4>
                     <ul className="list-disc list-inside space-y-1 text-muted-foreground text-xs @md/card:text-sm">
                       {achievements.map((achievement, idx) => (

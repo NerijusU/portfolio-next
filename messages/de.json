@@ -23,7 +23,9 @@
   "Experience": {
     "title": "Berufserfahrung",
     "subtitle": "Mein beruflicher Werdegang",
-    "websiteLabel": "Website"
+    "websiteLabel": "Website",
+    "responsibilitiesTitle": "Verantwortlichkeiten:",
+    "achievementsTitle": "Erfolge:"
   },
   "Education": {
     "title": "Bildung",

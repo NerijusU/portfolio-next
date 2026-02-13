@@ -23,7 +23,9 @@
   "Experience": {
     "title": "Work Experience",
     "subtitle": "My professional journey",
-    "websiteLabel": "Website"
+    "websiteLabel": "Website",
+    "responsibilitiesTitle": "Responsibilities:",
+    "achievementsTitle": "Achievements:"
   },
   "Education": {
     "title": "Education",
