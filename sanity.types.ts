@@ -32,6 +32,7 @@ export type LocaleString = {
   de?: string;
   pl?: string;
   ru?: string;
+  lt?: string;
 };
 
 export type LocaleText = {
@@ -40,6 +41,7 @@ export type LocaleText = {
   de?: string;
   pl?: string;
   ru?: string;
+  lt?: string;
 };
 
 export type LocaleStringArray = {
@@ -48,6 +50,7 @@ export type LocaleStringArray = {
   de?: Array<string>;
   pl?: Array<string>;
   ru?: Array<string>;
+  lt?: Array<string>;
 };
 
 export type LocaleBlockContent = {
@@ -107,6 +110,24 @@ export type LocaleBlockContent = {
     _key: string;
   }>;
   ru?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  lt?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -194,6 +215,10 @@ export type SiteSettings = {
   };
   maintenanceMode?: boolean;
   maintenanceMessage?: string;
+  experienceSection?: {
+    responsibilitiesTitle?: LocaleString;
+    achievementsTitle?: LocaleString;
+  };
 };
 
 export type SanityImageCrop = {
@@ -447,7 +472,7 @@ export type Experience = {
   _updatedAt: string;
   _rev: string;
   company?: string;
-  position?: string;
+  position?: LocaleString;
   employmentType?:
     | "full-time"
     | "part-time"
@@ -458,26 +483,9 @@ export type Experience = {
   startDate?: string;
   endDate?: string;
   current?: boolean;
-  description?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-  responsibilities?: Array<string>;
-  achievements?: Array<string>;
+  description?: LocaleBlockContent;
+  responsibilities?: LocaleStringArray;
+  achievements?: LocaleStringArray;
   technologies?: Array<
     {
       _key: string;
@@ -745,6 +753,7 @@ export type NAVIGATION_QUERY_RESULT = Array<{
     de?: string;
     pl?: string;
     ru?: string;
+    lt?: string;
   }> | null;
   href: string | null;
   icon: string | null;
@@ -1191,6 +1200,32 @@ export type ABOUT_QUERY_RESULT =
           _type: "block";
           _key: string;
         }>;
+        lt?: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?:
+            | "blockquote"
+            | "h1"
+            | "h2"
+            | "h3"
+            | "h4"
+            | "h5"
+            | "h6"
+            | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        }>;
       }> | null;
       yearsOfExperience: number | null;
       stats: Array<{
@@ -1368,10 +1403,17 @@ export type EDUCATION_QUERY_RESULT = Array<{
 
 // Source: components/sections/ExperienceSection.tsx
 // Variable: EXPERIENCE_QUERY
-// Query: *[_type == "experience"] | order(startDate desc){  company,  position,  employmentType,  location,  startDate,  endDate,  current,  description,  responsibilities,  achievements,  technologies[]->{name, category},  companyLogo,  companyWebsite}
+// Query: *[_type == "experience"] | order(startDate desc){  company,  "position": position[$locale],  employmentType,  location,  startDate,  endDate,  current,  "description": description[$locale],  "responsibilities": responsibilities[$locale],  "achievements": achievements[$locale],  technologies[]->{name, category},  companyLogo,  companyWebsite}
 export type EXPERIENCE_QUERY_RESULT = Array<{
   company: string | null;
-  position: string | null;
+  position: Array<{
+    _type: "localeString";
+    en?: string;
+    de?: string;
+    pl?: string;
+    ru?: string;
+    lt?: string;
+  }> | null;
   employmentType:
     | "contract"
     | "freelance"
@@ -1384,25 +1426,114 @@ export type EXPERIENCE_QUERY_RESULT = Array<{
   endDate: string | null;
   current: boolean | null;
   description: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
+    _type: "localeBlockContent";
+    en?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
+    de?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
       _key: string;
     }>;
-    level?: number;
-    _type: "block";
-    _key: string;
+    pl?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    ru?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    lt?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
   }> | null;
-  responsibilities: Array<string> | null;
-  achievements: Array<string> | null;
+  responsibilities: Array<{
+    _type: "localeStringArray";
+    en?: Array<string>;
+    de?: Array<string>;
+    pl?: Array<string>;
+    ru?: Array<string>;
+    lt?: Array<string>;
+  }> | null;
+  achievements: Array<{
+    _type: "localeStringArray";
+    en?: Array<string>;
+    de?: Array<string>;
+    pl?: Array<string>;
+    ru?: Array<string>;
+    lt?: Array<string>;
+  }> | null;
   technologies: Array<{
     name: string | null;
     category:
@@ -1430,6 +1561,34 @@ export type EXPERIENCE_QUERY_RESULT = Array<{
   } | null;
   companyWebsite: string | null;
 }>;
+
+// Source: components/sections/ExperienceSection.tsx
+// Variable: EXPERIENCE_LABELS_QUERY
+// Query: *[_id == "singleton-siteSettings"][0]{  "responsibilitiesTitle": experienceSection.responsibilitiesTitle[$locale],  "achievementsTitle": experienceSection.achievementsTitle[$locale]}
+export type EXPERIENCE_LABELS_QUERY_RESULT =
+  | {
+      responsibilitiesTitle: null;
+      achievementsTitle: null;
+    }
+  | {
+      responsibilitiesTitle: Array<{
+        _type: "localeString";
+        en?: string;
+        de?: string;
+        pl?: string;
+        ru?: string;
+        lt?: string;
+      }> | null;
+      achievementsTitle: Array<{
+        _type: "localeString";
+        en?: string;
+        de?: string;
+        pl?: string;
+        ru?: string;
+        lt?: string;
+      }> | null;
+    }
+  | null;
 
 // Source: components/sections/HeroSection.tsx
 // Variable: HERO_QUERY
@@ -1504,6 +1663,7 @@ export type HERO_QUERY_RESULT =
         de?: string;
         pl?: string;
         ru?: string;
+        lt?: string;
       }> | null;
       headlineAnimatedWords: Array<{
         _type: "localeStringArray";
@@ -1511,6 +1671,7 @@ export type HERO_QUERY_RESULT =
         de?: Array<string>;
         pl?: Array<string>;
         ru?: Array<string>;
+        lt?: Array<string>;
       }> | null;
       headlineAnimationDuration: number | null;
       shortBio: Array<{
@@ -1519,6 +1680,7 @@ export type HERO_QUERY_RESULT =
         de?: string;
         pl?: string;
         ru?: string;
+        lt?: string;
       }> | null;
       email: string | null;
       phone: string | null;
@@ -1695,6 +1857,7 @@ export type TESTIMONIALS_QUERY_RESULT = Array<{
     de?: string;
     pl?: string;
     ru?: string;
+    lt?: string;
   }> | null;
   rating: number | null;
   date: string | null;
@@ -1729,7 +1892,8 @@ declare module "@sanity/client" {
     '*[_type == "certification"] | order(issueDate desc){\n  name,\n  issuer,\n  issueDate,\n  expiryDate,\n  credentialId,\n  credentialUrl,\n  logo,\n  description,\n  skills[]->{name, category},\n  order\n}': CERTIFICATIONS_QUERY_RESULT;
     '*[_id == "singleton-profile"][0]{\n  email,\n  phone,\n  location,\n  socialLinks\n}': PROFILE_QUERY_RESULT;
     '*[_type == "education"] | order(endDate desc, startDate desc){\n  institution,\n  degree,\n  fieldOfStudy,\n  startDate,\n  endDate,\n  current,\n  gpa,\n  description,\n  achievements,\n  logo,\n  website,\n  order\n}': EDUCATION_QUERY_RESULT;
-    '*[_type == "experience"] | order(startDate desc){\n  company,\n  position,\n  employmentType,\n  location,\n  startDate,\n  endDate,\n  current,\n  description,\n  responsibilities,\n  achievements,\n  technologies[]->{name, category},\n  companyLogo,\n  companyWebsite\n}': EXPERIENCE_QUERY_RESULT;
+    '*[_type == "experience"] | order(startDate desc){\n  company,\n  "position": position[$locale],\n  employmentType,\n  location,\n  startDate,\n  endDate,\n  current,\n  "description": description[$locale],\n  "responsibilities": responsibilities[$locale],\n  "achievements": achievements[$locale],\n  technologies[]->{name, category},\n  companyLogo,\n  companyWebsite\n}': EXPERIENCE_QUERY_RESULT;
+    '*[_id == "singleton-siteSettings"][0]{\n  "responsibilitiesTitle": experienceSection.responsibilitiesTitle[$locale],\n  "achievementsTitle": experienceSection.achievementsTitle[$locale]\n}': EXPERIENCE_LABELS_QUERY_RESULT;
     '*[_id == "singleton-profile"][0]{\n  firstName,\n  lastName,\n  "headlineStaticText": headlineStaticText[$locale],\n  "headlineAnimatedWords": headlineAnimatedWords[$locale],\n  headlineAnimationDuration,\n  "shortBio": shortBio[$locale],\n  email,\n  phone,\n  location,\n  availability,\n  socialLinks,\n  yearsOfExperience,\n  profileImage\n}': HERO_QUERY_RESULT;
     '*[_type == "project" && featured == true] | order(order asc)[0...6]{\n  title,\n  slug,\n  tagline,\n  category,\n  liveUrl,\n  githubUrl,\n  coverImage,\n  technologies[]->{name, category, color}\n}': PROJECTS_QUERY_RESULT;
     '*[_type == "service"] | order(order asc, _createdAt desc){\n  title,\n  slug,\n  icon,\n  shortDescription,\n  fullDescription,\n  features,\n  technologies[]->{name, category},\n  deliverables,\n  pricing,\n  timeline,\n  featured,\n  order\n}': SERVICES_QUERY_RESULT;

@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
 /**
- * Localized array of strings: one array per locale (en, de, pl, ru).
- * Use for word lists, tags, etc. that differ by language.
+ * Localized array of strings: one array per locale.
+ * Use for word lists, tags, responsibilities, achievements, etc.
  */
 export default defineType({
   name: "localeStringArray",
@@ -14,28 +14,30 @@ export default defineType({
       title: "English",
       type: "array",
       of: [{ type: "string" }],
-      validation: (Rule) => Rule.min(0).max(10),
     }),
     defineField({
       name: "de",
       title: "German",
       type: "array",
       of: [{ type: "string" }],
-      validation: (Rule) => Rule.min(0).max(10),
     }),
     defineField({
       name: "pl",
       title: "Polish",
       type: "array",
       of: [{ type: "string" }],
-      validation: (Rule) => Rule.min(0).max(10),
     }),
     defineField({
       name: "ru",
       title: "Russian",
       type: "array",
       of: [{ type: "string" }],
-      validation: (Rule) => Rule.min(0).max(10),
+    }),
+    defineField({
+      name: "lt",
+      title: "Lithuanian",
+      type: "array",
+      of: [{ type: "string" }],
     }),
   ],
 });

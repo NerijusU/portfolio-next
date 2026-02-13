@@ -32,5 +32,11 @@ export default defineType({
       type: "array",
       of: [{ type: "block" }],
     }),
+    defineField({
+      name: "lt",
+      title: "Lithuanian",
+      type: "array",
+      of: [{ type: "block" }],
+    }),
   ],
 });

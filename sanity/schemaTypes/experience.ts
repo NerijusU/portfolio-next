@@ -14,7 +14,7 @@ export default defineType({
     defineField({
       name: "position",
       title: "Position/Role",
-      type: "string",
+      type: "localeString",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -58,23 +58,20 @@ export default defineType({
     defineField({
       name: "description",
       title: "Description",
-      type: "array",
-      of: [{ type: "block" }],
+      type: "localeBlockContent",
       description: "Detailed job responsibilities and achievements",
     }),
     defineField({
       name: "responsibilities",
       title: "Key Responsibilities",
-      type: "array",
-      of: [{ type: "string" }],
-      description: "Bullet points of main responsibilities",
+      type: "localeStringArray",
+      description: "Bullet points of main responsibilities (per language)",
     }),
     defineField({
       name: "achievements",
       title: "Key Achievements",
-      type: "array",
-      of: [{ type: "string" }],
-      description: "Quantifiable accomplishments",
+      type: "localeStringArray",
+      description: "Quantifiable accomplishments (per language)",
     }),
     defineField({
       name: "technologies",
@@ -99,7 +96,7 @@ export default defineType({
     }),
     defineField({
       name: "companyWebsite",
-      title: "Company Website",
+      title: "Website",
       type: "url",
     }),
     defineField({
@@ -112,7 +109,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: "position",
+      title: "position.en",
       subtitle: "company",
       media: "companyLogo",
       current: "current",
