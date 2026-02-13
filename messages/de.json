@@ -10,7 +10,8 @@
     "en": "Englisch",
     "de": "Deutsch",
     "pl": "Polnisch",
-    "ru": "Russisch"
+    "ru": "Russisch",
+    "lt": "Litauisch"
   },
   "ModeToggle": {
     "tooltip": "Design umschalten"
@@ -21,7 +22,8 @@
   },
   "Experience": {
     "title": "Berufserfahrung",
-    "subtitle": "Mein beruflicher Werdegang"
+    "subtitle": "Mein beruflicher Werdegang",
+    "websiteLabel": "Website"
   },
   "Education": {
     "title": "Bildung",

@@ -25,6 +25,10 @@
 *.pem
 /private_files
 /prompts
+/migrations
+
+# example/dummy data (Sanity import scripts & NDJSON)
+/Data
 
 # debug
 npm-debug.log*

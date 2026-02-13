@@ -61,14 +61,14 @@ async function HeroSection({ locale }: LocaleSectionProps) {
                   text={asLocaleString(profile.headlineStaticText)}
                   words={asLocaleStringArray(profile.headlineAnimatedWords)}
                   duration={profile.headlineAnimationDuration || 3000}
-                  className="text-xl @md/hero:text-2xl @lg/hero:text-3xl text-muted-foreground font-medium"
+                  className="text-base @sm/hero:text-lg @md/hero:text-xl @lg/hero:text-2xl text-muted-foreground font-medium"
                 />
               ) : profile.headlineStaticText ? (
-                <p className="text-xl @md/hero:text-2xl @lg/hero:text-3xl text-muted-foreground font-medium">
+                <p className="text-base @sm/hero:text-lg @md/hero:text-xl @lg/hero:text-2xl text-muted-foreground font-medium">
                   {asLocaleString(profile.headlineStaticText)}
                 </p>
               ) : null}
-              <p className="text-base @md/hero:text-lg text-muted-foreground leading-relaxed">
+              <p className="text-sm @md/hero:text-base @lg/hero:text-lg text-muted-foreground leading-relaxed break-words">
                 {asLocaleText(profile.shortBio)}
               </p>
 

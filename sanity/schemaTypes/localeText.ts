@@ -9,5 +9,6 @@ export default defineType({
     defineField({ name: "de", title: "German", type: "text" }),
     defineField({ name: "pl", title: "Polish", type: "text" }),
     defineField({ name: "ru", title: "Russian", type: "text" }),
+    defineField({ name: "lt", title: "Lithuanian", type: "text" }),
   ],
 });

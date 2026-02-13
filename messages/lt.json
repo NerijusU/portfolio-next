@@ -1,0 +1,63 @@
+{
+  "Common": {
+    "present": "Dabar",
+    "notAvailable": "N/A",
+    "at": "prie"
+  },
+  "LanguageSwitcher": {
+    "label": "Kalba",
+    "tooltip": "Keisti kalbą",
+    "en": "Anglų",
+    "de": "Vokiečių",
+    "pl": "Lenkų",
+    "ru": "Rusų",
+    "lt": "Lietuvių"
+  },
+  "ModeToggle": {
+    "tooltip": "Perjungti temą"
+  },
+  "Skills": {
+    "title": "Įgūdžiai ir kompetencijos",
+    "subtitle": "Išsamus mano techninių įgūdžių ir kasdien naudojamų įrankių apžvalga"
+  },
+  "Experience": {
+    "title": "Darbo patirtis",
+    "subtitle": "Mano profesinis kelias",
+    "websiteLabel": "Svetainė"
+  },
+  "Education": {
+    "title": "Išsilavinimas",
+    "subtitle": "Mano akademinis pagrindas",
+    "present": "Dabar",
+    "notAvailable": "N/A",
+    "gpaLabel": "GPA:",
+    "achievementsTitle": "Pasiekimai ir apdovanojimai",
+    "visitWebsite": "Apsilankyti svetainėje"
+  },
+  "Certifications": {
+    "title": "Sertifikatai",
+    "subtitle": "Profesiniai įgaliojimai ir sertifikatai",
+    "certificateLabel": "SERTIFIKATAS",
+    "certificateFor": "už",
+    "validUntil": "Galioja iki:",
+    "expiredSuffix": " (Pasibaigęs)",
+    "credentialIdLabel": "Įgaliojimo ID:",
+    "verifyCredential": "Patikrinti įgaliojimą"
+  },
+  "Contact": {
+    "title": "Susisiekite",
+    "infoTitle": "Kontaktinė informacija",
+    "emailLabel": "El. paštas",
+    "phoneLabel": "Telefonas",
+    "locationLabel": "Vieta",
+    "followMe": "Sekite mane"
+  },
+  "Testimonials": {
+    "title": "Profesionalūs atsiliepimai",
+    "subtitle": "Ką apie mane sako kiti"
+  },
+  "About": {
+    "title": "Apie mane",
+    "subtitle": "Susipažinkite su manimi geriau"
+  }
+}

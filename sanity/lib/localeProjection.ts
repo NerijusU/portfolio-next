@@ -32,3 +32,14 @@ export function asLocaleStringArray(value: unknown): string[] {
 export function asLocaleText(value: unknown): string {
   return typeof value === "string" ? value : "";
 }
+
+/**
+ * Safely narrows a localeBlockContent projection to block array for PortableText.
+ * @param value - Value from GROQ localeBlockContent[$locale] projection.
+ * @returns Resolved block array, or undefined if invalid.
+ */
+export function asLocaleBlockContent(
+  value: unknown
+): { _type: string; children?: { _type: string; text: string }[] }[] | undefined {
+  return Array.isArray(value) ? value : undefined;
+}

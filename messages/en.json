@@ -10,7 +10,8 @@
     "en": "English",
     "de": "German",
     "pl": "Polish",
-    "ru": "Russian"
+    "ru": "Russian",
+    "lt": "Lithuanian"
   },
   "ModeToggle": {
     "tooltip": "Toggle theme"
@@ -21,7 +22,8 @@
   },
   "Experience": {
     "title": "Work Experience",
-    "subtitle": "My professional journey"
+    "subtitle": "My professional journey",
+    "websiteLabel": "Website"
   },
   "Education": {
     "title": "Education",

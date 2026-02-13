@@ -10,7 +10,8 @@
     "en": "Angielski",
     "de": "Niemiecki",
     "pl": "Polski",
-    "ru": "Rosyjski"
+    "ru": "Rosyjski",
+    "lt": "Litewski"
   },
   "ModeToggle": {
     "tooltip": "Przełącz motyw"
@@ -21,7 +22,8 @@
   },
   "Experience": {
     "title": "Doświadczenie zawodowe",
-    "subtitle": "Moja ścieżka zawodowa"
+    "subtitle": "Moja ścieżka zawodowa",
+    "websiteLabel": "Strona"
   },
   "Education": {
     "title": "Edukacja",

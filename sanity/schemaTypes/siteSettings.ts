@@ -182,6 +182,26 @@ export default defineType({
       type: "text",
       rows: 3,
     }),
+    defineField({
+      name: "experienceSection",
+      title: "Experience Section Labels",
+      type: "object",
+      description: "Labels for the Work Experience section (per language)",
+      fields: [
+        defineField({
+          name: "responsibilitiesTitle",
+          title: "Responsibilities Label",
+          type: "localeString",
+          description: "e.g. 'Key Responsibilities:'",
+        }),
+        defineField({
+          name: "achievementsTitle",
+          title: "Achievements Label",
+          type: "localeString",
+          description: "e.g. 'Achievements:'",
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {
