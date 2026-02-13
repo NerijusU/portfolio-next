@@ -23,7 +23,9 @@
   "Experience": {
     "title": "Опыт работы",
     "subtitle": "Мой профессиональный путь",
-    "websiteLabel": "Сайт"
+    "websiteLabel": "Сайт",
+    "responsibilitiesTitle": "Обязанности:",
+    "achievementsTitle": "Достижения:"
   },
   "Education": {
     "title": "Образование",

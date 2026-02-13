@@ -23,7 +23,9 @@
   "Experience": {
     "title": "Doświadczenie zawodowe",
     "subtitle": "Moja ścieżka zawodowa",
-    "websiteLabel": "Strona"
+    "websiteLabel": "Strona",
+    "responsibilitiesTitle": "Obowiązki:",
+    "achievementsTitle": "Osiągnięcia:"
   },
   "Education": {
     "title": "Edukacja",
